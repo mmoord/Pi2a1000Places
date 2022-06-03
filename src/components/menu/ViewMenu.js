@@ -1,9 +1,15 @@
 import React from 'react'
 
-const ViewMenu = () => {
-  return (
-    <div>ViewMenu</div>
-  )
-}
 
-export default ViewMenu
+export default function ViewMenu() {
+//const ViewMenu = () => {
+  return (
+    <>
+    <h1>Menu</h1>
+    <div>Pi to A 1000 Places</div>
+
+    
+
+    </>
+  );
+}

@@ -5,7 +5,7 @@
 
 .nav-label {
     font-family: "Optima";
-    font-size: 1em;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .nav-link:hover {
-    background: #E09393;
+    background: #030303;
 }
 
 .nav-link-style {
@@ -23,8 +23,19 @@
 }
 
 .nav-strip {
-    background: #A43F3F;
+    background: #636678;
     display: flex;
     flex: 1;
     flex-direction: row;
+
+    .nav-button {
+        background: #000000;
+        color: #FFFFFF;
+        font-size: 18px;
+        padding: 10px 60px;
+        border-radius: 5px;
+        margin: 10px 0px;
+        cursor: PointerEvent;
+        ;
+    }
 }

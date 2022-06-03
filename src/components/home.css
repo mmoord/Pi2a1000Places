@@ -1,0 +1,22 @@
+/* <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;1,300&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
+
+font-family: 'Libre Franklin', sans-serif;
+font-family: 'Tiro Devanagari Marathi', serif; */
+
+.img_contanier {
+    height: 550px;
+    width: 100%;
+    background-color: black;
+  
+    /* using a div and setting a background image */
+    
+    background: url("./images/banner.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: list-item;
+    justify-content: left;
+    align-items: normal;
+  }
