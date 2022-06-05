@@ -1,5 +1,6 @@
 
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
+import { userContext } from '../../App';
 
 function UpdateUser() {
 
@@ -9,11 +10,12 @@ function UpdateUser() {
   const passwordInput = useRef();
   const balanceInput = useRef();
   const url = "http://localhost:8080/Pi2a1000Places"
+  const [user, setUser] = useContext(userContext);
 
   async function update() {
     // Whenever you are getting a useRefs value, make sure it's inside some function call. Otherwise it will
     // error due to the refInput.current = undefined, meaning there is no .value available
-    const user = {
+    const customer = {
         fname: fnameInput.current.value,
         lname: lnameInput.current.value,
         username: usernameInput.current.value,
@@ -24,11 +26,11 @@ function UpdateUser() {
       method: 'POST',
       
       body: JSON.stringify({ 
-        username: user.username,
-        password: user.password,
-        fname: user.fname,
-        lname: user.lname,
-        balance: user.balance
+        username: customer.username,
+        password: customer.password,
+        fname: customer.fname,
+        lname: customer.lname,
+        balance: customer.balance
      })
     }
 
@@ -40,7 +42,7 @@ function UpdateUser() {
         )
         //const result = await response.stringify
         
-        alert("You've Successfully Signed Up Welcome ", user.fname);
+        alert("You've Successfully Signed Up Welcome ", customer.fname);
     } catch (error) {
         console.log("ERROR")
         if(error === {Error: 409}){

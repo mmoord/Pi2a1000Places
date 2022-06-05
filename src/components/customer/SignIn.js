@@ -8,6 +8,7 @@ export default function CustomerSignin(){
   const usernameInput = useRef();
   const passwordInput = useRef();
   const navigate = useNavigate();
+  const [user, setUser] = useContext(userContext);
  
   
 
@@ -31,8 +32,10 @@ export default function CustomerSignin(){
       const response = await fetch("http://localhost:8080/Pi2a1000Places/auth",requestOptions)
       .then((response) => {
         if(response.ok){console.log("All Good")}else{throw new Error(response.status)}
-      }
-      )
+      }).then(setUser({...user, username: customer.username}))
+      
+      console.log(user)
+      console.log(user)
       navigate("/home")
     }catch (error) {
       console.log("ERROR")

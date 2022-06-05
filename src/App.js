@@ -18,7 +18,7 @@ function App() {
   return (
       <>
           <BrowserRouter>
-          <userContext.Provider value={[user, setUser]}/>
+          <userContext.Provider value={[user, setUser]}>
               <Nav />
               <Routes>
                     <Route path="/Home" element={<Home />} />
@@ -30,6 +30,7 @@ function App() {
                     <Route path="SignOut" element={<CustomerSignOut></CustomerSignOut>} />
                     <Route path= "UpdateUser" element={<UpdateUser/>}/>
               </Routes>
+              </userContext.Provider>
           </BrowserRouter>
           {/* <Payments/> */}
       </>

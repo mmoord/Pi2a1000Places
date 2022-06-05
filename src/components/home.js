@@ -1,11 +1,18 @@
 //import axios from "axios";
+import { useContext } from 'react';
+import { userContext } from '../App';
 import './home.css';
 
 
 
 export default function Home() {
+    
+    const [user, setUser] = useContext(userContext);
+    console.log(user)
     return (
+        
         <>
+            
             <div className="img_contanier">
             <h1>Pi to A 1000 Places</h1>
 
