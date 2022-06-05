@@ -7,6 +7,7 @@ import Order from "./components/order/Order";
 import CustomerSignin from "./components/customer/SignIn";
 import SignUp from "./components/customer/SignUp";
 import CustomerSignOut from "./components/customer/SignOut";
+import UpdateUser from "./components/customer/UpdateUser"
 
 //import Payments from "/Users/tenycemelrose/my-app/pi/src/components/creditcard/Payments.js"
 export const userContext = createContext();
@@ -27,6 +28,7 @@ function App() {
                     <Route path="SignIn" element={<CustomerSignin />} />
                     <Route path="/signUp" element={<SignUp />} />
                     <Route path="SignOut" element={<CustomerSignOut></CustomerSignOut>} />
+                    <Route path= "UpdateUser" element={<UpdateUser/>}/>
               </Routes>
           </BrowserRouter>
           {/* <Payments/> */}

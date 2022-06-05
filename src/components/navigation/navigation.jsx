@@ -39,6 +39,11 @@ const Nav = (props) => {
                     <label className="nav-label">Sign Out</label>
                 </div>
             </Link>
+            <Link to={"/UpdateUser"} className="nav-link">
+                <div className="nav-link-style">
+                    <label className="nav-label">Update User</label>
+                </div>
+            </Link>
         </div>
     
         // const Button = styled.Button
