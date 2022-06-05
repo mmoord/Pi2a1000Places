@@ -34,9 +34,9 @@ const Nav = (props) => {
                     <label className="nav-label">Sign Up</label>
                 </div>
             </Link>
-            <Link to={"/logOut"} className="nav-link">
+            <Link to={"/SignOut"} className="nav-link">
                 <div className="nav-link-style">
-                    <label className="nav-label">Log Out</label>
+                    <label className="nav-label">Sign Out</label>
                 </div>
             </Link>
         </div>
