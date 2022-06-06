@@ -1,5 +1,6 @@
 
 import React, { useContext, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { userContext } from '../../App';
 
 function UpdateUser() {
@@ -9,6 +10,7 @@ function UpdateUser() {
   const usernameInput = useRef();
   const passwordInput = useRef();
   const balanceInput = useRef();
+  const navigate = useNavigate();
   const url = "http://localhost:8080/Pi2a1000Places"
   const [user, setUser] = useContext(userContext);
   
@@ -36,48 +38,90 @@ function UpdateUser() {
      })
     }
 
-    const authOption = {
-      method: 'POST',
 
-      body: JSON.stringify({
-        username: user.username,
-        password: user.password
-      })
-    }
 
     try {
-      console.log(user.username, user.password)
-      console.log(authOption)
-      const response =await fetch(`${url}/auth`, authOption ).then(await fetch(`${url}/customers`,requestOptions).then((result) => {if(!result.ok){throw new Error(result.status)}else{console.log("All Good")}}))
-      .then((response) => {if(!response.ok){throw new Error(response.status)}else{console.log("All Good")}})
-      
-      
 
+      const response =await fetch(`${url}/customers`,requestOptions)
+      .then((result) => {if(!result.ok){throw new Error(result.status)}else{console.log("All Good")}})
+      .then(setUser({...user, username: customer.username, password: customer.password}))
+      
         alert("You've Successfully Updated Your Account ");
+        navigate("/home")
+
     } catch (error) {
         console.log("ERROR")
         if(error === {Error: 409}){
           alert("That username has already been taken")
         }
+        alert(error)
         console.log(error);
     }
 }
 
+async function deleteAccount(){
+  const customer = {
+    username: usernameInput.current.value,
+    password: passwordInput.current.value
+};
+  const requestOptions = {
+    method: 'DELETE',
+  
+   body: JSON.stringify({ 
+    username: customer.username,
+    password: customer.password,
+ })}
+
+ try {
+  const response =await fetch(`${url}/customers`,requestOptions)
+  .then((result) => {if(!result.ok){throw new Error(result.status)}else{console.log("All Good")}})
+  
+  setUser({...user, username: "Guest", password: ""})
+  
+    alert("You've Successfully Deleted Your Account ");
+    navigate("/home")
+
+} catch (error) {
+    console.log("ERROR")
+    if(error === {Error: 409}){
+      alert("That username has already been taken")
+    }
+    alert(error)
+    console.log(error);
+}
+
+
+}
+
+
+
   return (
     <>
-            <h4>Hello, new customer please register below.</h4>
+            <h4>Hello, please update your information below.</h4>
             <input placeholder="Update First Name" ref={fnameInput}></input>
             <input placeholder="Update Last Name" ref={lnameInput}></input>
             <input placeholder="Update Your Balance" ref={balanceInput}></input>
             <br></br>
             <br></br>
             <br></br>
-            <input placeholder="Update Your Username" ref={usernameInput}></input>
+            <input placeholder="Current Username" ref={usernameInput}></input>
             <input type="password" placeholder="Update Your Password" ref={passwordInput}></input>
             <br></br>
-            <button onClick={update}>Sign Up</button>
+            <button onClick={update}>Update Account</button>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <h4>If you would like to delete your account, please fill out the information below</h4>
+            <input placeholder="Current Username" ref={usernameInput}></input>
+            <input type="password" placeholder="Current Password" ref={passwordInput}></input>
+            <button onClick={deleteAccount}>Delete Account Account</button>
+
+
+
         </>
   )
-}
+  }
 
 export default UpdateUser

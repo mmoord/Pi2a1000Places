@@ -36,7 +36,7 @@ export default function CustomerSignin(){
       
       console.log(user)
       console.log(user)
-      navigate("/UpdateUser")
+      navigate("/home")
     }catch (error) {
       console.log("ERROR")
       if(error == "Error: 404" ) {
