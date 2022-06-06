@@ -12,8 +12,10 @@ import UpdateUser from "./components/customer/UpdateUser"
 //import Payments from "/Users/tenycemelrose/my-app/pi/src/components/creditcard/Payments.js"
 export const userContext = createContext();
 
+
 function App() {
-    const [user, setUser] = useState({ username: "Guest" });
+    const [user, setUser] = useState({ username: "Guest", password: "" });
+
   // React-router-dom provideds us the ability to emulate multipage websites while still only being a single page
   return (
       <>

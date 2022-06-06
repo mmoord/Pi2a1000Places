@@ -1,5 +1,5 @@
 
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { userContext } from '../../App';
 
 function UpdateUser() {
@@ -11,6 +11,8 @@ function UpdateUser() {
   const balanceInput = useRef();
   const url = "http://localhost:8080/Pi2a1000Places"
   const [user, setUser] = useContext(userContext);
+  
+  console.log(user)
 
   async function update() {
     // Whenever you are getting a useRefs value, make sure it's inside some function call. Otherwise it will
@@ -34,15 +36,24 @@ function UpdateUser() {
      })
     }
 
+    const authOption = {
+      method: 'POST',
+
+      body: JSON.stringify({
+        username: user.username,
+        password: user.password
+      })
+    }
+
     try {
-        const response = await fetch(`${url}/customers`, requestOptions)
-        .then((response) => {
-          if(response.ok){console.log("All Good")}else{throw new Error(response.status)}
-        }
-        )
-        //const result = await response.stringify
-        
-        alert("You've Successfully Signed Up Welcome ", customer.fname);
+      console.log(user.username, user.password)
+      console.log(authOption)
+      const response =await fetch(`${url}/auth`, authOption ).then(await fetch(`${url}/customers`,requestOptions).then((result) => {if(!result.ok){throw new Error(result.status)}else{console.log("All Good")}}))
+      .then((response) => {if(!response.ok){throw new Error(response.status)}else{console.log("All Good")}})
+      
+      
+
+        alert("You've Successfully Updated Your Account ");
     } catch (error) {
         console.log("ERROR")
         if(error === {Error: 409}){

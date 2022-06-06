@@ -38,7 +38,7 @@ function SignUp() {
           if(response.ok){console.log("All Good")}else{throw new Error(response.status)}
         }
         )
-        //const result = await response.stringify
+        
         
         alert("You've Successfully Signed Up Welcome ", user.fname);
     } catch (error) {

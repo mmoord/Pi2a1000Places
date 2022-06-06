@@ -9,7 +9,7 @@ export default function CustomerSignin(){
   const passwordInput = useRef();
   const navigate = useNavigate();
   const [user, setUser] = useContext(userContext);
- 
+  const url = "http://localhost:8080/Pi2a1000Places"
   
 
   async function login(){
@@ -29,14 +29,14 @@ export default function CustomerSignin(){
  
 
     try{
-      const response = await fetch("http://localhost:8080/Pi2a1000Places/auth",requestOptions)
+      const response = await fetch(`${url}/auth`,requestOptions)
       .then((response) => {
         if(response.ok){console.log("All Good")}else{throw new Error(response.status)}
-      }).then(setUser({...user, username: customer.username}))
+      }).then(setUser({...user, username: customer.username, password: customer.password}))
       
       console.log(user)
       console.log(user)
-      navigate("/home")
+      navigate("/UpdateUser")
     }catch (error) {
       console.log("ERROR")
       if(error == "Error: 404" ) {
